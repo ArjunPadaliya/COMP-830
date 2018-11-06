@@ -34,6 +34,7 @@ public class BookInformation {
 	{
 		return summary;
 	}
+	
 
 	public static Comparator<BookInformation> compareAuthor = new Comparator<BookInformation>() {
 
