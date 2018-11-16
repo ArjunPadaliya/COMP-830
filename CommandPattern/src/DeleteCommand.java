@@ -1,20 +1,24 @@
 
-public class DeleteCommand {
-
-	private String myString;
+public class DeleteCommand implements GameCmdInterface {
+	private String myString; 
 	
-	public DeleteCommand(String s)
-	{
-		this.myString = s;
+ 	public DeleteCommand(String myString) {
+ 		this.myString = myString; 
+ 	}
+ 	
+	@Override
+	public void excecute() {
+		ListOfWords.getInstance().removeWord(myString);
 	}
 
-	public void execute() {
-		
+	@Override
+	public void undo() {
+		ListOfWords.getInstance().addWord(myString);	
 	}
 
-	public void undo() {		
-	}
-
+	@Override
 	public void redo() {
+		ListOfWords.getInstance().removeWord(myString);
 	}
+
 }

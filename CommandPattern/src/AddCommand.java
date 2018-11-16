@@ -1,21 +1,26 @@
 
-public class AddCommand implements GameCommandInterface {
+public class AddCommand implements GameCmdInterface {
+
+	private String myString; 
 	
-	private String myString;
-	
-	public AddCommand(String s)
-	{
-		this.myString = s;
+ 	public AddCommand(String myString) {
+ 		this.myString = myString; 
+ 	}
+ 	
+	@Override
+	public void excecute() {
+		ListOfWords.getInstance().addWord(myString);
 	}
 
-	public void execute() {
-		
+	@Override
+	public void undo() {
+		ListOfWords.getInstance().removeWord(myString);
+			
 	}
 
-	public void undo() {		
-	}
-
+	@Override
 	public void redo() {
+		ListOfWords.getInstance().addWord(myString);
 	}
 
 }
